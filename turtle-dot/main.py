@@ -1,11 +1,10 @@
-import dis
 from turtle import Turtle, Screen
 import random
 
 howard_turtle = Turtle()
 
 # Change a new shape and color
-howard_turtle.shape('turtle')
+howard_turtle.shape('arrow')
 howard_turtle.color('green')
 
 # Turtle movement to draw square
@@ -15,6 +14,10 @@ def create_square():
         howard_turtle.forward(100)
         howard_turtle.right(90)
 
+
+def random_color():
+    colors = ['red', 'yellow', 'blue', 'green', 'violet', 'orange', 'indigo']
+    howard_turtle.color(random.choice(colors))
 
 def create_dashline():
     howard_turtle.penup()
@@ -62,7 +65,7 @@ def turn_right(trigger):
 def random_walk():
     while True:
         turns = [turn_left, turn_right]
-        random_color = tuple (random.random() for _ in range(3))
+        random_color = tuple (random.randint(0, 255) for _ in range(3))
 
         # Change color
         x,y,z = random_color
@@ -77,24 +80,33 @@ def random_walk():
         
         
 def another_random_walk():
-    directions = [0, 90, 180, 360]
-    distance = [10, 20, 30, 40]
+    directions = [-90, 90]
+    distance = [20, 40]
     
     howard_turtle.pen(pensize=8)
-    
-    def random_color():
-        colors = ['red', 'yellow', 'blue', 'green', 'violet', 'orange', 'indigo']
-        howard_turtle.color(random.choice(colors))
-    
+        
     def move():
         random_color()
         howard_turtle.forward(random.choice(distance))
-        howard_turtle.setheading(random.choice(directions))
+        howard_turtle.right(random.choice(directions))
         
     while True:
         move()
         
+
+def make_spirograph():
     
+    def draw_and_turn():
+        random_color()
+        howard_turtle.speed(0)
+        howard_turtle.circle(80)
+        
+    for _ in range(36):
+        howard_turtle.right(10)
+        draw_and_turn()
+        
+make_spirograph()
+
 # show screen
 screen = Screen()
 screen.exitonclick()
