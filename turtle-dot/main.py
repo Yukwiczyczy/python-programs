@@ -1,3 +1,4 @@
+import dis
 from turtle import Turtle, Screen
 import random
 
@@ -44,6 +45,7 @@ def create_complex_shapes():
             howard_turtle.right(angle_turn)
             
         starting_count += 1
+ 
     
 def turn_left(trigger):
     if trigger == 1:
@@ -55,6 +57,7 @@ def turn_right(trigger):
     if trigger == 1:
         howard_turtle.right(90)
         howard_turtle.forward(20)
+
     
 def random_walk():
     while True:
@@ -72,7 +75,25 @@ def random_walk():
         
         selected_method(1)
         
-random_walk()
+        
+def another_random_walk():
+    directions = [0, 90, 180, 360]
+    distance = [10, 20, 30, 40]
+    
+    howard_turtle.pen(pensize=8)
+    
+    def random_color():
+        colors = ['red', 'yellow', 'blue', 'green', 'violet', 'orange', 'indigo']
+        howard_turtle.color(random.choice(colors))
+    
+    def move():
+        random_color()
+        howard_turtle.forward(random.choice(distance))
+        howard_turtle.setheading(random.choice(directions))
+        
+    while True:
+        move()
+        
     
 # show screen
 screen = Screen()
