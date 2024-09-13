@@ -45,9 +45,35 @@ def create_complex_shapes():
             
         starting_count += 1
     
-create_complex_shapes()
+def turn_left(trigger):
+    if trigger == 1:
+        howard_turtle.left(90)
+        howard_turtle.forward(20)
+    
+    
+def turn_right(trigger):
+    if trigger == 1:
+        howard_turtle.right(90)
+        howard_turtle.forward(20)
+    
+def random_walk():
+    while True:
+        turns = [turn_left, turn_right]
+        random_color = tuple (random.random() for _ in range(3))
 
-
+        # Change color
+        x,y,z = random_color
+        howard_turtle.color(z,y,z)
+        selected_method = random.choice(turns)
+        howard_turtle.color()
+        
+        # Change line size
+        howard_turtle.pen(pensize=10)
+        
+        selected_method(1)
+        
+random_walk()
+    
 # show screen
 screen = Screen()
 screen.exitonclick()
