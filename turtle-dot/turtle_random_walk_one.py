@@ -27,7 +27,7 @@ def random_walk():
 
     while True:
         turn_and_move()
-    
+  
 random_walk()
             
 screen = Screen()

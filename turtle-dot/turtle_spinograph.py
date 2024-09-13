@@ -26,7 +26,6 @@ def draw_spinograph():
         draw_circle()
         howard_turtle.right(10)
 
-
 draw_spinograph()
             
 screen = Screen()

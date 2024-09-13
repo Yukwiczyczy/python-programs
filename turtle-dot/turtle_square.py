@@ -12,7 +12,8 @@ def create_square():
     for i in range(4):
         howard_turtle.forward(100)
         howard_turtle.right(90)
-
+        
+create_square()
         
 screen = Screen()
 screen.exitonclick()
