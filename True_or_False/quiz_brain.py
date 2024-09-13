@@ -14,8 +14,8 @@ class Quiz:
     def next_question(self):
         current_question = self.list[self.question_roll_number]
         self.question_roll_number += 1
-        answer = input(f"[Question no. {self.question_roll_number}] {current_question.question}: (True/False): ")
-        self.current_question = f"[Question no. {self.question_roll_number}] {current_question.question}:"
+        answer = input(f"\n[Question no. {self.question_roll_number}] {current_question.question}: (True/False): ")
+        self.current_question = f"[Correction no. {self.question_roll_number}] {current_question.question}:"
         self.check_answer(answer, current_question.answer)
 
 

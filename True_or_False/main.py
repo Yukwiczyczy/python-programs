@@ -1,7 +1,7 @@
 from data import question_data
 from question_model import Question
 from quiz_brain import Quiz
-import os
+import os, random
 
 def the_logo():
     print ("""
@@ -20,8 +20,8 @@ def program_execution():
     question_bank = []
     
     for question_row in question_data:
-        question_text = question_row['text']
-        question_answer = question_row['answer']
+        question_text = question_row['question']
+        question_answer = question_row['correct_answer']
 
         question_to_import = [
             Question(question_text=question_text, 
@@ -30,6 +30,7 @@ def program_execution():
 
         question_bank += question_to_import
     
+    random.shuffle(question_bank)
     new_question = Quiz(question_bank=question_bank)
 
     while new_question.has_question():
