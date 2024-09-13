@@ -1,112 +1,45 @@
-from turtle import Turtle, Screen
-import random
+import msvcrt, os
+print("""
+      
+  _____           _   _        ____       ___ 
+ |_   __   _ _ __| |_| | ___  |  _ \  ___|__ \\
+   | || | | | '__| __| |/ _ \ | | | |/ _ \ / /
+   | || |_| | |  | |_| |  __/ | |_| | (_) |_| 
+   |_| \__,_|_|   \__|_|\___| |____/ \___/(_) 
+                                              
+""")
 
-howard_turtle = Turtle()
+print("""
+      Press the following:
+      1 - to draw square
+      2 - draw dashline
+      3 - draw triangle to dodecagon
+      4 - random walk
+      5 - draw spinograph
+      0 - quit
+      """)
 
-# Change a new shape and color
-howard_turtle.shape('arrow')
-howard_turtle.color('green')
-
-# Turtle movement to draw square
-def create_square():
-    
-    for i in range(4):
-        howard_turtle.forward(100)
-        howard_turtle.right(90)
-
-
-def random_color():
-    colors = ['red', 'yellow', 'blue', 'green', 'violet', 'orange', 'indigo']
-    howard_turtle.color(random.choice(colors))
-
-def create_dashline():
-    howard_turtle.penup()
-    howard_turtle.setx(-500)
-    
-    for i in range(13):
-        howard_turtle.pendown()
-        howard_turtle.forward(20)
-        howard_turtle.penup()
-        howard_turtle.forward(20)
-
-
-def create_complex_shapes():
-    max_sides = 8
-    
-    starting_count = 3
-    for draw in range(max_sides):
-        angle_turn = int(360/starting_count)
+while True:
+    if msvcrt.kbhit():
+        pressed_key = msvcrt.getch()
         
-        # random_number = random.randint(0, 256)
-        random_color = tuple (random.random() for _ in range(3))
-        print(random_color)
-        x,y,z = random_color
-        howard_turtle.color(z,y,z)
-        
-        for _ in range(starting_count):
-            howard_turtle.forward(100)
-            howard_turtle.right(angle_turn)
+        if pressed_key == b'0':
+            print("Hope you enjoyed! ")
+            exit
+        elif pressed_key == b'1':
+            import turtle_square
+        elif pressed_key == b'2':
+            import turtle_dashline
+        elif pressed_key == b'3':
+            import turtle_complex_shape
+        elif pressed_key == b'4':
+            import turtle_random_walk_one
+        elif pressed_key == b'5':
+            import turtle_spinograph
+        else:
+            print("\nCannot recognize the key. \n")
             
-        starting_count += 1
- 
-    
-def turn_left(trigger):
-    if trigger == 1:
-        howard_turtle.left(90)
-        howard_turtle.forward(20)
-    
-    
-def turn_right(trigger):
-    if trigger == 1:
-        howard_turtle.right(90)
-        howard_turtle.forward(20)
-
-    
-def random_walk():
-    while True:
-        turns = [turn_left, turn_right]
-        random_color = tuple (random.randint(0, 255) for _ in range(3))
-
-        # Change color
-        x,y,z = random_color
-        howard_turtle.color(z,y,z)
-        selected_method = random.choice(turns)
-        howard_turtle.color()
         
-        # Change line size
-        howard_turtle.pen(pensize=10)
-        
-        selected_method(1)
-        
-        
-def another_random_walk():
-    directions = [-90, 90]
-    distance = [20, 40]
-    
-    howard_turtle.pen(pensize=8)
-        
-    def move():
-        random_color()
-        howard_turtle.forward(random.choice(distance))
-        howard_turtle.right(random.choice(directions))
-        
-    while True:
-        move()
-        
-
-def make_spirograph():
-    
-    def draw_and_turn():
-        random_color()
-        howard_turtle.speed(0)
-        howard_turtle.circle(80)
-        
-    for _ in range(36):
-        howard_turtle.right(10)
-        draw_and_turn()
-        
-make_spirograph()
+   
 
 # show screen
-screen = Screen()
-screen.exitonclick()
